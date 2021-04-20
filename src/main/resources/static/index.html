@@ -17,6 +17,10 @@
             <div class="container unauthenticated">
                 With GitHub: <a href="/oauth2/authorization/github">click here</a>
             </div>
+            <div class="container text-danger error"></div>
+            <div>
+                With Google: <a href="/oauth2/authorization/google">click here</a>
+            </div>
             <div class="container authenticated" style="display:none">
                 Logged in as: <span id="user"></span>
                 <div>
@@ -50,6 +54,13 @@
                   }
                 }
               }
+            });
+            $.get("/error", function(data) {
+                if (data) {
+                    $(".error").html(data);
+                } else {
+                    $(".error").html('');
+                }
             });
         </script>
         <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
